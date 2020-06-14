@@ -1,0 +1,17 @@
+Pour la réalisation de ce projet, nous utiliserons différentes classes:
+
+la classe "grille" avec comme attributs
+
+-L'état de la grille
+-les conditions de victoires
+
+
+
+la classe "joueur" avec comme attributs
+
+- le signe correspondant aux 2 joueurs
+- une image pour chaque joueur 
+
+la classe "partie" avec comme attributs
+
+-
