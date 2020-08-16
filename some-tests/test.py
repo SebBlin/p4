@@ -10,9 +10,6 @@ nbligne = 6
 
 import numpy as np
 
-#print(grille)
-#print(grille.T)
-
 def get_diagonal_gauche(g):
     tab=[]
     for d in range(6):
@@ -52,7 +49,7 @@ def test_4_successif (ligne,joueur):
     """tot
     """
     for i in range (len(ligne)-3):
-        if (np.count_nonzero(np.array(ligne[i:i+4]) == joueur,axis=0) == 4):
+        if (np.count_nonzero(np.array(ligne[i:i+4]) == joueur) == 4):
            return True
     return False
 
