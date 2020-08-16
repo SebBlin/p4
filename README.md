@@ -20,8 +20,8 @@ cf https://fr.wikipedia.org/wiki/Puissance_4 pour plus de détails.
 ## Les spécifications générales du jeu
 ### Les modes de jeu
 Le programme que l'on va developer doit permettre 
-- à un joueur humain de jouer contre un autre joueur humain.
-- à un joueur de jouer contre l'ordinateur.
+- à un joueur humain de jouer contre un autre joueur humain (sur le même ordinateur).
+- à un joueur humain de jouer contre l'ordinateur.
 
 ### Les niveau de difficulté
 Lorsque le joueur joue contre l'ordinateur, il doit pouvoir choisir le niveau de difficulté.

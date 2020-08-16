@@ -7,20 +7,71 @@ Created on Fri Jun 12 18:42:28 2020
 
 nbcol = 7
 nbligne = 6
-ligne_1=[0,0,0,0,0,0,0]
-ligne_2=[0,0,0,0,0,0,0]
-ligne_3=[0,0,0,0,0,0,0]
-ligne_4=[0,0,0,0,0,0,0]
-ligne_5=[0,0,1,0,0,0,0]
-ligne_6=[1,1,2,2,2,1,1]
-grille = [
-    ligne_1,
-    ligne_2,
-    ligne_3,
-    ligne_4,
-    ligne_5,
-    ligne_6
-]
+
+import numpy as np
+
+def get_diagonal_gauche(g):
+    tab=[]
+    for d in range(6):
+        i = min(d+3,nbcol-1)
+        j = max(0,d-3)
+        l=[]
+        while i>=0 and j<=nbligne-1 :
+            l.append(g[j,i])
+            i-=1
+            j+=1
+        tab.append(l)
+    return tab
+
+def get_diagonal_droite(g):
+    tab=[]
+    for d in range(7):
+        i = max(0,d-2)
+        j = max(2-d,0)
+        l=[]
+        while i<nbcol and j<nbligne :
+            #print ('i=',i,'j=',j, 'x=',g[j,i] )
+            l.append(g[j,i])
+            i+=1
+            j+=1
+        tab.append(l)
+    return tab
+
+def get_horizontal(g):
+    return g
+
+def get_vertical(g):
+    return g.T
+
+
+
+def test_4_successif (ligne,joueur):
+    """tot
+    """
+    for i in range (len(ligne)-3):
+        if (np.count_nonzero(np.array(ligne[i:i+4]) == joueur) == 4):
+           return True
+    return False
+
+# n = np.array([1,1,1,1])
+# print(np.count_nonzero(n == 1))
+
+grille = np.array([
+    [0,0,0,0,0,0,0],
+    [0,0,1,0,0,0,0],
+    [0,0,1,1,0,0,0],
+    [0,0,1,0,0,0,0],
+    [0,1,2,0,0,1,0],
+    [1,1,2,2,2,1,1],
+])
+
+joueur = 1
+print(np.any([test_4_successif(l,joueur) for l in get_horizontal(grille)]))
+print(np.any([test_4_successif(l,joueur) for l in get_vertical(grille)]))
+print(np.any([test_4_successif(l,joueur) for l in get_diagonal_gauche(grille)]))
+print(np.any([test_4_successif(l,joueur) for l in get_diagonal_droite(grille)]))
+
+exit(0)
 
 pion = [' ', 'X', 'O']
 
@@ -58,57 +109,5 @@ print_bottom_line()
 
 
 
-# def condition_victoire(ligne):
-#     compteur = 1
-#     nombre_de_croix = ligne.count(1)
-#     nombre_de_rond = ligne.count(2)
-#     longueur_tableau = len(ligne)
-#     print(longueur_tableau)
-#     if nombre_de_croix >= 4:
-#         for i in range (0,longueur_tableau-1):
-#             if compteur >= 4 :
-#                     print ("le joueur 1 a gagné")
-#                     break
-#             if (ligne[i]==1 & ligne[i+1]!=1):
-#                 compteur=1
-#             if (ligne[i]== 1 & ligne[i+1]==1):
-#                 compteur=compteur+1
-#     if nombre_de_rond >= 4:
-#         for i in range (0,longueur_tableau-1):
-#             if compteur >= 4 :
-#                     print ("le joueur 2 a gagné")
-#                     break
-#             if (ligne[i]==2 & ligne[i+1]!=2):
-#                 compteur=1
-#             if (ligne[i]== 2 & ligne[i+1]==2):
-#                 compteur=compteur+1
-                
-                
-    
-#     return (nombre_de_croix,nombre_de_rond,compteur,"toto")
-
-
-# variable = [0,1,1,1,1,1,2]
-# variable_2 = "oui"
-# nbc,nbr,*r = condition_victoire ( [1,1,2,2,2,1,1])
-
-# print ("le nombre de croix est de")
-# print (nbc)
-# print("le nombre de rond est de " )
-# print(nbr)
-# #print("le compteur est de" )
-# #print(c)
-# print (r)
-
-
-def test_4_successif (ligne,joueur):
-    """tot
-    """
-    for i in range (len(ligne)-3):
-         if (ligne[i:i+4].count(joueur) == 4):
-            return True
-    return False
-        
-
-res=test_4_successif([2,2,2,2,2,1,1],2)
-print (res)
+# res=test_4_successif([2,2,2,2,2,1,1],2)
+# print(res)

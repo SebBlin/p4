@@ -1,13 +1,17 @@
+#  affichage d'une grille
+# voir https://en.wikipedia.org/wiki/Box-drawing_character#Unicode
+
+
 nbcol = 7
 nbligne = 6
 
 grille = [
     [0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
     [0,0,1,0,0,0,0],
-    [0,0,1,2,0,0,0]
+    [0,0,1,0,0,0,0],
+    [0,0,1,0,0,0,0],
+    [0,0,1,2,2,2,0]
 ]
 
 pion = [' ', 'X', 'O']
